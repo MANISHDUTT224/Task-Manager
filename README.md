@@ -3,7 +3,7 @@
 The Task Manager is a simple, interactive web application that helps users create, track, and manage tasks. Built using Bootstrap for responsive design and JavaScript for dynamic functionality, this project ensures an intuitive and visually appealing interface. With local storage integration, tasks persist across sessions, making it an effective tool for managing daily workflows.
 
 ## FEATURES
-###TASK CREATION:
+### TASK CREATION:
 
 Users can add tasks with a name, description, and status (e.g., New, Pending, Completed, Cancelled).
 ### TASK DISPLAY:
