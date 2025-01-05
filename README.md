@@ -1,3 +1,4 @@
+Task Manager
 The Task Manager is a web-based application designed to simplify task organization and management. Built using Bootstrap for responsive design and JavaScript for dynamic functionality, this project provides a user-friendly interface for tracking tasks with persistence through browser local storage.
 
 Features
