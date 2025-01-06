@@ -1,6 +1,7 @@
 
 tasks=JSON.parse(localStorage.getItem('tasks'))||[];
 loadTasks();
+
 let num=tasks.length;
 function AddTask(){
     const taskname=document.querySelector('#taskName').value;
@@ -33,13 +34,16 @@ function loadTasks(){
     }
    
     let taskHtML='';
+    if(tasks.length!==0){
+        
     tasks.forEach((task)=>{
         const taskStatus=task.taskstatus;
         const taskNo=task.taskno;
-        taskHtML+=`<button class="btn btn-${taskNo}" onclick="Selected(${task.taskno})"><li class="list-group-item d-flex justify-content-between align-items-end item-${taskNo}"> ${task.taskname} <span class="badge rounded-pill bg-${badges[taskStatus]} ">${task.taskstatus}</span></li></button>`;
+        taskHtML+=`<button class="btn btn-${taskNo}" type="button" data-bs-toggle="popover" data-bs-title="${task.taskname}" data-bs-content="${task.taskdescription}" onclick="Selected(${task.taskno})"><li class="list-group-item d-flex justify-content-between align-items-end item-${taskNo}"> ${task.taskname} <span class="badge rounded-pill bg-${badges[taskStatus]} ">${task.taskstatus}</span></li></button>`;
         document.querySelector('.js-taskgroup').innerHTML=taskHtML;
 
     });
+}
     let alltaskHTML='All Tasks will be displayed here.<ul class="list-group list-group-flush mt-3">';
     let completetaskHTML='Completed Tasks will be displayed here.<ul class="list-group list-group-flush mt-3">';
     let pendingtaskHTML='Pending Tasks will be displayed here.<ul class="list-group list-group-flush mt-3">';
@@ -52,6 +56,8 @@ function loadTasks(){
             pendingtaskHTML+=`<li class="list-group-item d-flex justify-content-between align-items-end item-${task.taskNo}"> ${task.taskname}</li></button>`;
         }
     });
+    document.querySelector('.js-taskgroup').innerHTML=taskHtML;
+
     alltaskHTML+=`</ul>`;
     completetaskHTML+=`</ul>`;
     pendingtaskHTML+=`</ul>`;
@@ -85,10 +91,7 @@ document.querySelector('.delete-button').addEventListener('click',()=>{
         }
         else{
             i++;    
-        }
-        // console.log(task);
-        // console.log(document.querySelector(`.item-${task.taskno}`).classList);
-        
+        }    
     });
     console.log(tasks); 
     loadTasks();
